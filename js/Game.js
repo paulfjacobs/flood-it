@@ -5,11 +5,6 @@
 // the global namespace for the project
 var FI = FI || {};
 
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-
 function startUp() {
     console.log("Start Up!");
 
@@ -26,12 +21,9 @@ function startUp() {
     canvas.style.width = nRowsAndCols * nBoxPixelsSize + 'px';
     canvas.style.height = nRowsAndCols * nBoxPixelsSize + 'px';
 
-    ////// DEBUG pull out into classes
-    var colors = ['red', 'green', 'yellow', 'purple']; // switch to 6 colors
-    for(var row =0; row < nRowsAndCols; row++) {
-        for(var col = 0; col < nRowsAndCols; col++) {
-            ctx.fillStyle = colors[getRandomInt(0,3)];
-            ctx.fillRect(row * nBoxPixelsSize, col * nBoxPixelsSize, nBoxPixelsSize, nBoxPixelsSize);
-        }
-    }
+    // build the Grid
+    var colors = ['red', 'green', 'yellow', 'purple', 'pink', 'orange'];
+    var grid = new FI.Grid(nRowsAndCols, nBoxPixelsSize, colors);
+    grid.draw(ctx);
+    console.log("Drew grid.")
 }
