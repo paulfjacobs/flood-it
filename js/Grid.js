@@ -23,7 +23,6 @@ FI.Grid = function(numRowsAndCols, dimensionOfBox, colors) {
 
 FI.Grid.prototype.draw = function(ctx) {
     // draw each of the boxes
-    // TODO: It looks the bottom row is a different size of height dimension
     for(var row =0; row < this.numRowsAndCols; row++) {
         for(var col = 0; col < this.numRowsAndCols; col++) {
             this.data[row][col].draw(ctx);
