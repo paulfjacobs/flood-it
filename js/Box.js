@@ -26,4 +26,10 @@ FI.Box.prototype.draw = function(ctx) {
     ctx.fillRect(this.x, this.y, this.dimension, this.dimension);
 }
 
-// TODO: set color
+/**
+ * Set the new color.  NOTE: Doesn't redraw.
+ * @param newColor The new color.
+ */
+FI.Box.prototype.setColor = function(newColor) {
+    this.color = newColor;
+}

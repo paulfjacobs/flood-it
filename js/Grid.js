@@ -15,8 +15,8 @@ FI.Grid = function(numRowsAndCols, dimensionOfBox, colors) {
     for(var row =0; row < numRowsAndCols; row++) {
         this.data[row] = new Array(numRowsAndCols);
         for(var col = 0; col < numRowsAndCols; col++) {
-            this.data[row][col] = new FI.Box(dimensionOfBox, row * numRowsAndCols,
-                                             col * numRowsAndCols, colors[getRandomInt(0,colors.length-1)]);
+            this.data[row][col] = new FI.Box(dimensionOfBox, row * dimensionOfBox,
+                                             col * dimensionOfBox, colors[getRandomInt(0,colors.length-1)]);
         }
     }
 }
