@@ -33,3 +33,7 @@ FI.Box.prototype.draw = function(ctx) {
 FI.Box.prototype.setColor = function(newColor) {
     this.color = newColor;
 }
+
+FI.Box.prototype.getColor = function() {
+    return this.color;
+}

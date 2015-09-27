@@ -5,6 +5,10 @@
 // the global namespace for the project
 var FI = FI || {};
 
+// a little weird having this up here but we need to be able to inform the grid about the color selection
+// TODO: Probably refactor; maybe have Game be a proper class
+var grid;
+
 function startUp() {
     console.log("Start Up!");
 
@@ -24,8 +28,8 @@ function startUp() {
 
     // build the Grid
     var colors = ['red', 'green', 'yellow', 'purple', 'pink', 'orange'];
-    var grid = new FI.Grid(nRowsAndCols, nBoxPixelsSize, colors);
-    grid.draw(ctx);
+    grid = new FI.Grid(nRowsAndCols, nBoxPixelsSize, colors, ctx);
+    grid.draw();
     console.log("Drew grid.")
 
     // TODO: It would be nicer to simply have squares of the colors that we can click on; drawing a second canvas was getting tricky
@@ -44,7 +48,9 @@ function startUp() {
 function colorSelected() {
     var select = document.getElementById("colorSelect");
     var color = select.options[select.selectedIndex].text;
-    console.log("Color selected:"+color);
+    console.log("Color selected function called with this color:"+color);
 
-    // TODO: propagate change on grid
+    // propagate change on grid
+    grid.colorSelected(color, 0, 0);
+    grid.draw();
 }
