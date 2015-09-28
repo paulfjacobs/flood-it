@@ -76,5 +76,8 @@ function colorSelected() {
     grid.colorSelected(color, 0, 0);
     grid.draw();
 
+    // reset the explored values
+    grid.resetExplored();
+
     // TODO: determine if the user won
 }

@@ -15,6 +15,7 @@ FI.Box = function(dimension, x, y, color) {
     this.x = x;
     this.y = y;
     this.color = color;
+    this.explored = false;
 }
 
 /**
@@ -36,4 +37,12 @@ FI.Box.prototype.setColor = function(newColor) {
 
 FI.Box.prototype.getColor = function() {
     return this.color;
+}
+
+FI.Box.prototype.setExplored = function(explored) {
+    this.explored = explored;
+}
+
+FI.Box.prototype.getExplored = function() {
+    return this.explored;
 }
