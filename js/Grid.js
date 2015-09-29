@@ -74,3 +74,15 @@ FI.Grid.prototype.resetExplored = function() {
         }
     }
 }
+
+FI.Grid.prototype.allOneColor = function() {
+    var color = this.data[0][0].getColor();
+    for(var row =0; row < this.numRowsAndCols; row++) {
+        for(var col = 0; col < this.numRowsAndCols; col++) {
+            if(color != this.data[row][col].getColor()) {
+                return false;
+            }
+        }
+    }
+    return true;
+}

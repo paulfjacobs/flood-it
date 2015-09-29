@@ -51,8 +51,8 @@ function startUp() {
     var click_counter = document.getElementById("clickCounter");
     click_counter.innerHTML = counter;
 
-    // TODO: calculate real value
-    total_clicks_allowed = 22;
+    // "Flood It" has 22 steps with 6 colors and 12 x 12 board size; scale based upon that
+    total_clicks_allowed = Math.floor(22 * ((colors.length * (nRowsAndCols+nRowsAndCols)) / (6 * (12+12))));
     var total_clicks_allowed_counter = document.getElementById("clickTotalAllowed");
     total_clicks_allowed_counter.innerHTML = total_clicks_allowed;
 }
@@ -62,11 +62,6 @@ function colorSelected() {
     var click_counter = document.getElementById("clickCounter");
     click_counter.innerHTML = counter+1;
     counter++;
-
-    if(counter > total_clicks_allowed) {
-        console.log("Lost");
-        // TODO: popup
-    }
 
     var select = document.getElementById("colorSelect");
     var color = select.options[select.selectedIndex].text;
@@ -79,5 +74,21 @@ function colorSelected() {
     // reset the explored values
     grid.resetExplored();
 
-    // TODO: determine if the user won
+    // determine if we won or lost
+    if(grid.allOneColor()) {
+        logAndAlert("Congratulations, you've won the game with a total of "+counter+" clicks.");
+
+        // startup a new game
+        startUp();
+    } else if(counter == total_clicks_allowed) {
+        logAndAlert("Sorry, you lost the game.");
+
+        // startup a new game
+        startUp();
+    }
+}
+
+function logAndAlert(message) {
+    console.log(message);
+    alert(message);
 }
