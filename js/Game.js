@@ -46,6 +46,13 @@ function startUp() {
         select.appendChild(opt);
     }
 
+    // make sure the select starts with the current color up in the corner selected
+    var startColor = grid.data[0][0].getColor();
+    for(var colorIndex in colors) {
+        if(colors[colorIndex] ===  startColor)
+        select.selectedIndex = colorIndex;
+    }
+
     // click counter
     counter = 0;
     var click_counter = document.getElementById("clickCounter");
